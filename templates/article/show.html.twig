@@ -23,6 +23,14 @@
                 <th>Illustration</th>
                 <td>{{ article.illustration }}</td>
             </tr>
+            <tr>
+                <th>Categories</th>
+                <td>
+                    {% for category in article.categories %}
+                    <div style="color: {{ category.color }}">{{ category.name }}</div>
+                    {% endfor %}
+                </td>
+            </tr>
         </tbody>
     </table>
 

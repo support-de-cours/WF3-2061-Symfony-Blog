@@ -15,6 +15,7 @@
         {{ form_errors(form.title) }}
     </div>
 
+
     {# Content #}
     <div class="form-group">
         {{ form_label(form.content) }}
@@ -33,12 +34,28 @@
 
     {# Categories Collection #}
     <div
-        data-controller="collection"         {# The trigger of "collection" controller #}
+        data-controller="collection"                        {# The trigger of "collection" controller #}
+        data-counter="{{ form.categories | length }}"       {# The items counter #}
+        data-default-items="1"                              {# The value of new items on collection init #}
+        data-required-items="1"                             {# The value of minimum items required #}
         class="form-group mt-5 mb-5">
     
         {# The collection items container #}
         <div data-collection-container>
+        {% for category in form.categories %}
+            <div class="input-group" data-item-serial="{{ loop.index0 }}">
+                {{ form_widget(category) }}
+                <button 
+                    type="button" 
+                    class="btn btn-danger btn-sm" 
+                    aria-label="Delete"
+                    data-target="{{ loop.index0 }}"
+                    data-action="click->collection#remove"
+                > &times; </button>
+            </div>
+        {% endfor %}
         </div>
+
 
         {# Create new item button #}
         <button 
@@ -47,10 +64,30 @@
             data-action="click->collection#add"
         >+ add item</button>
 
+
+        {# New item template #}
+        <template>
+            <div class="input-group">
+                {{ form_widget(form.categories.vars.prototype) }}
+
+                <div class="input-group-append">
+                    <button 
+                        type="button" 
+                        class="btn btn-danger btn-sm" 
+                        aria-label="Delete"
+                        data-target="__name__"
+                        data-action="click->collection#remove"
+                    >&times;</button>
+                </div>
+            </div>
+        </template>
     </div>
+
 
 
     <button class="btn btn-sm btn-secondary" type="reset">Cancel</button>
     <button class="btn btn-sm btn-primary">{{ button_label|default('Save') }}</button>
     
-{{ form_end(form) }}
+{{ form_end(form, {
+    'render_rest': false
+}) }}

@@ -7,6 +7,7 @@ use App\Entity\Category;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -55,13 +56,13 @@ class ArticleType extends AbstractType
             ->add('categories', CollectionType::class, [
                 'entry_type' => EntityType::class,
                 'entry_options' => [
-                    'class' => Category::class
-                ]
+                    'class' => Category::class,
+                    'choice_label' => 'name'
+                ],
+                'allow_add' => true,
+                'allow_delete' => true,
+                'prototype' => true,
             ])
-
-            // Category 1 _________ [-]
-            // Category 2 _________ [-]
-            // [+]
         ;
     }
 
