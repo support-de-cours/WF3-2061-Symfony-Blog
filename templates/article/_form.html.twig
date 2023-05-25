@@ -32,7 +32,23 @@
     </div>
 
     {# Categories Collection #}
+    <div
+        data-controller="collection"         {# The trigger of "collection" controller #}
+        class="form-group mt-5 mb-5">
     
+        {# The collection items container #}
+        <div data-collection-container>
+        </div>
+
+        {# Create new item button #}
+        <button 
+            type="button" 
+            class="btn btn-success btn-sm" 
+            data-action="click->collection#add"
+        >+ add item</button>
+
+    </div>
+
 
     <button class="btn btn-sm btn-secondary" type="reset">Cancel</button>
     <button class="btn btn-sm btn-primary">{{ button_label|default('Save') }}</button>
