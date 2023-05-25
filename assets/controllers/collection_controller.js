@@ -2,22 +2,28 @@ import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
 
-    // The collection HTML Node
+    // The collection HTML Node 
+    // <div data-controller="collection">
     collection;
 
     // The collection items container
+    // <div data-collection-container>
     container;
 
     // Collection items counter
+    // <div data-counter="42>"
     counter;
 
     // The new item prototype
+    // <template>
     prototype;
 
     // The value of new items on collection init
+    // <div data-default-items="2">
     defaultItems;
 
     // The value of minimum items required
+    // <div data-required-items="1">
     requiredItems;
 
     /**
