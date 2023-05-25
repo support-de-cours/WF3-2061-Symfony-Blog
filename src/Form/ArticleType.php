@@ -47,6 +47,8 @@ class ArticleType extends AbstractType
                     ])
                 ]
             ])
+
+            // Categories Collection
         ;
     }
 

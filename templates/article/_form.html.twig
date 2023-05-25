@@ -4,8 +4,35 @@
     }
 }) }}
 
-    {{ form_widget(form) }}
+    {# CSRF token #}
+    {{ form_widget(form._token) }}
 
+    {# Title #}
+    <div class="form-group">
+        {{ form_label(form.title) }}
+        {{ form_widget(form.title) }}
+        {{ form_help(form.title) }}
+        {{ form_errors(form.title) }}
+    </div>
+
+    {# Content #}
+    <div class="form-group">
+        {{ form_label(form.content) }}
+        {{ form_widget(form.content) }}
+        {{ form_help(form.content) }}
+        {{ form_errors(form.content) }}
+    </div>
+
+    {# Illustration #}
+    <div class="form-group">
+        {{ form_label(form.illustration) }}
+        {{ form_widget(form.illustration) }}
+        {{ form_help(form.illustration) }}
+        {{ form_errors(form.illustration) }}
+    </div>
+
+    
+    <button class="btn btn-sm btn-secondary" type="reset">Cancel</button>
     <button class="btn btn-sm btn-primary">{{ button_label|default('Save') }}</button>
     
 {{ form_end(form) }}
