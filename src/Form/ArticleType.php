@@ -59,6 +59,7 @@ class ArticleType extends AbstractType
                     'class' => Category::class,
                     'choice_label' => 'name'
                 ],
+                
                 'allow_add' => true,
                 'allow_delete' => true,
                 'prototype' => true,
